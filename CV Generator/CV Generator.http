@@ -1,6 +1,5 @@
 @CV_Generator_HostAddress = http://localhost:5087
 
-GET {{CV_Generator_HostAddress}}/weatherforecast/
-Accept: application/json
+GET http://localhost:5087
 
 ###
