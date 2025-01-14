@@ -1,21 +1,5 @@
 @CV_Generator_HostAddress = http://localhost:5087
 
-GET http://localhost:5087/cv
-
-###
-
-GET http://localhost:5087/cv/home
-
-###
-
-GET http://localhost:5087/cv/login
-
-###
-
-GET http://localhost:5087/cv/register
-
-###
-
-GET http://localhost:5087/cv/generatecv
+GET http://localhost:5087
 
 ###

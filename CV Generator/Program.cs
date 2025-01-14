@@ -1,49 +1,22 @@
 // Basic of API Create
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDirectoryBrowser();
-
-builder.Services.AddOpenApi();
-
 var app = builder.Build();
 
-app.UseStaticFiles();
-
-app.UseDirectoryBrowser();
-
-
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
 
 app.UseHttpsRedirection();
 
-
-
-app.MapGet("/cv", () =>
+app.MapGet("/", () =>
 {
     return "CV Website Successfully Run!!";
 });
-
-app.MapGet("/cv/home", async context =>
+app.MapGet("/cv/home", () =>
 {
-    await context.Response.SendFileAsync("Pages/Html/home.html");
+    return "Hello I am home Page";
 });
 
-app.MapGet("/cv/login", async context =>
+app.MapGet("/cv/login", () =>
 {
-    await context.Response.SendFileAsync("Pages/Html/Login.html");
+    return "Hello I am login Page";
 });
-
-app.MapGet("/cv/register", async context =>
-{
-    await context.Response.SendFileAsync("Pages/Html/Register.html");
-});
-
-app.MapGet("cv/generatecv", async context =>
-{
-    await context.Response.SendFileAsync("Pages/Html/CvGenerator.html");
-});
-
 app.Run();
