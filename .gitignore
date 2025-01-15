@@ -36,3 +36,6 @@ Dockerfile.*
 *.db
 *.sqlite
 *.sqlite3
+
+# mac file 
+.DS_Store
