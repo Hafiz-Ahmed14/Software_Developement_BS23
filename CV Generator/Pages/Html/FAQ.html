@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator</title>
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Header -->
+    <header class="bg-white py-3 fixed-top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Left Section -->
+                <div class="col-lg-5">
+                    <a href="home.html" class="text-warning text-decoration-none">
+                        <h3 class="mb-0">CV Generator</h3>
+                    </a>
+                </div>
+                <!-- Right Section -->
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-end">
+                        <a href="Login.html" class="btn btn-outline-dark me-3 fw-bold text-dark">Login</a>
+                        <a href="CvGenerator.html" class="btn btn-warning fw-bold">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1 mt-2 pt-5">
+        <!-- Section 1: Introduction -->
+        <div class="container-fluid text-center p-5 bg-light">
+            <div class="py-5">
+                <h1 class="display-5 text-dark"><b>Frequently Asked Questions</b></h1>
+            </div>
+        </div>
+
+        <!-- Section 2: Accordion -->
+        <div class="container my-5">
+            <div class="accordion px-5" id="cvAccordion">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed fs-4 text-secondary" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                            aria-controls="collapseOne">How do I create an account?</button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#cvAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                In order for you to use all the features, you will be asked to create an account by filling in your email address. After that it is possible to create a password.
+                                You can then use these details to log into your account. If you have forgotten your password, you can request a new one
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed fs-4 text-secondary" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">How do I login?</button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#cvAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                By logging in via the top right corner of the website, you will get access to your account.
+                                 In case you have forgotten your password, you can request a new one
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed fs-4 text-secondary" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                            aria-controls="collapseThree">How do I change my template?</button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#cvAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                A preview of the document is displayed in the template you selected in the editor. 
+                                At the bottom of the example, you can select another template in the menu bar by clicking on the 'Template' icon. Colour, font 'Aa', font size 'tT' and line spacing '↕' can also be changed here.
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed fs-4 text-secondary" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
+                            aria-controls="collapseFour">How do I download my CV?</button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#cvAccordion">
+                        <div class="accordion-body">
+                            <p>
+                                To download your CV,click the 'Download' button to the CvGenerator page and download your cv as pdf.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-2 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 CV Generator. All Rights Reserved.</p>
+            <div class="social-icons mt-2">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
