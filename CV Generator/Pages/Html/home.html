@@ -33,6 +33,19 @@
       .accordion-button:not(.collapsed) {
         background-color: #f8f9fa;
       }
+
+      .circle {
+    width: 60px; /* Equal width and height for a perfect circle */
+    height: 60px;
+    border-radius: 50%; /* Makes it round */
+    font-size: 20px; /* Font size for the number */
+    font-weight: bold;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-shrink: 0; /* Prevents shrinking in flex layouts */
+}
+
     </style>
   </head>
 
@@ -172,6 +185,99 @@
             </button>
         </div>
     </div>
+
+
+    <!--How it works-->
+
+    <section class="container my-5">
+      <h1 class="text-center text-dark text-justify mt-5 mb-5 py-4">How This Website Works</h1>
+      <div class="row">
+          <!-- Step 1 -->
+          <div class="col-md-4 d-flex align-items-center">
+              <div class="circle bg-secondary text-white d-flex justify-content-center align-items-center me-3">
+                  1
+              </div>
+              <div>
+                  <h3 class="h6"><b>Choose a Template</b></h3>
+                  <p class="mb-0">Select from a variety of professional and visually appealing CV templates to suit your needs and industry preferences.</p>
+              </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="col-md-4 d-flex align-items-center">
+              <div class="circle bg-secondary text-white d-flex justify-content-center align-items-center me-3">
+                  2
+              </div>
+              <div>
+                  <h3 class="h6"><b>Fill in Your Information</b></h3>
+                  <p class="mb-0">Input your personal details, education, experience, skills, and achievements into the predefined fields.</p>
+              </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="col-md-4 d-flex align-items-center">
+              <div class="circle bg-secondary text-white d-flex justify-content-center align-items-center me-3">
+                  3
+              </div>
+              <div>
+                  <h3 class="h6"><b>Download and Share</b></h3>
+                  <p class="mb-0">Review your CV, make any final adjustments, and download it in PDF format. You can also share it directly from the platform.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+
+  
+  <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Carousel Items -->
+      <div class="carousel-inner">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+              <h3 class="text-center py-2">Choose a template</h3>
+              <div class="row justify-content-center">
+                  <div class="col-lg-9 col-md-6 col-sm-12">
+                      <div class="card template-card h-100 shadow-sm">
+                          <img src="../Images/template.png" class="card-img-top img-fluid" style="height: 600px;" alt="Template 1">
+                          
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+              <h3 class="text-center py-2">Fill in Your Information</h3>
+              <div class="row justify-content-center">
+                  <div class="col-lg-9 col-md-6 col-sm-12">
+                      <div class="card template-card h-100 shadow-sm">
+                          <img src="../Images/input.jpg" class="card-img-top img-fluid" style="height: 600px;" alt="Template 6">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Left Button -->
+      <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" 
+          type="button" data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-left"></i>
+      </button>
+
+      <!-- Right Button -->
+      <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" 
+          type="button" data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-right"></i>
+      </button>
+  </div>
+  
+
+      
+
+  
+  
+
+
+
       <div class="container my-5">
         <!-- Header -->
         <h1 class="text-center mb-4">
