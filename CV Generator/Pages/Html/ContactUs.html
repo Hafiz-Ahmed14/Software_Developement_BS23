@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            padding: 1.5rem;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            /* Adjust heading size */
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+    <!-- Header -->
+    <header class="bg-white py-3 fixed-top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Left Section -->
+                <div class="col-lg-5">
+                    <a href="home.html" class="text-warning text-decoration-none">
+                        <h3 class="mb-0">CV Generator</h3>
+                    </a>
+                </div>
+                <!-- Right Section -->
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-end">
+                        <a href="Login.html" class="btn btn-outline-dark me-3 fw-bold text-dark">Login</a>
+                        <a href="CvGenerator.html" class="btn btn-warning fw-bold">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container d-flex flex-column align-items-center mt-5 pt-5">
+        <!-- Contact Us Heading -->
+        <h1 class="text-bold text-center mb-3"><b>Contact Us</b></h1>
+        <!-- Form Description -->
+
+        <!-- Form Box -->
+        <div class="card shadow">
+            <span class="py-3 text-secondary">
+                Do you have a question, remark, complaint, or suggestion? Please first
+                read the frequently asked questions before contacting us. If your
+                question remains unanswered, use the form below.
+            </span>
+            <!-- Form -->
+            <form>
+                <!-- Subject -->
+                <div class="mb-3">
+                    <label for="emailOrUsername" class="form-label">Subject</label>
+                    <div class="input-group">
+                        <select class="form-control pe-5" id="emailOrUsername" required>
+                            <option value="">Select a subject</option>
+                            <option value="question">Question</option>
+                            <option value="remark">Remark</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="suggestion">Suggestion</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Name</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your name" required />
+                </div>
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="emailOrUsername" placeholder="Enter your email"
+                        required />
+                </div>
+                <!-- Question -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Question</label>
+                    <input type="text" class="form-control" id="emailOrUsername" placeholder="Enter your question"
+                        required />
+                </div>
+                <!-- Send Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-3">
+        <p class="text-center mb-0">©  2025 CV/Resume Generator. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

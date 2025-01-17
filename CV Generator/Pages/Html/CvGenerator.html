@@ -17,19 +17,8 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-        <style>
-          #live-preview {
-              width: 100%;
-              height: auto;
-              overflow: visible;
-          }
-        </style>
     </head>
-    
+
     <body>
         <header class="bg-primary text-white py-1">
             <h1 class="text-center">
@@ -149,16 +138,12 @@
                             <h4 class="text-center mb-4">
                                 Live CV/Resume Preview
                             </h4>
-                            <hr>
                             <div id="live-preview" class="text-muted">
                                 <p class="text-center">
                                     Your CV will appear here as you add
                                     information.
                                 </p>
                             </div>
-                            <div class="text-center mt-4">
-                              <button class="btn btn-success" onclick="exportToPDF()">Download as PDF</button>
-                          </div>
                         </div>
                     </div>
                 </div>
@@ -166,12 +151,12 @@
         </div>
 
         <!-- Bootstrap and JS file -->
-        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script>
             const formTemplates = {
                 personalDetails: `
-                    <div id="personalDetails">
-                        <h5>Personal Details</h5>
+					<div id="personalDetails">
+					 	<h5>Personal Details</h5>
                         <form>
                             <div class="mb-3">
                                 <label for="fatherName" class="form-label">Father's Name</label>
@@ -206,10 +191,10 @@
                                 <input type="text" id="permanentAddress" class="form-control" placeholder="Enter permanent address" oninput="updatePreview()">
                             </div>
                         </form>
-                    </div>
-                `,
+					</div>
+                    `,
                 education: `
-                    <div id='education'> 
+					<div id='education'> 
                         <h5>Education</h5>
                         <form>
                             <div class="mb-3">
@@ -221,10 +206,10 @@
                                 <input type="text" id="institution" class="form-control" placeholder="Institution name" oninput="updatePreview()">
                             </div>
                         </form>
-                    </div>
-                `,
+					</div>
+						`,
                 skills: `
-                    <div id='skills'>
+				<div id='skills'>
                         <h5>Skills</h5>
                         <form>
                             <div class="mb-3">
@@ -232,10 +217,10 @@
                                 <input type="text" id="skillName" class="form-control" placeholder="e.g., JavaScript, Python" oninput="updatePreview()">
                             </div>
                         </form>
-                    </div>
-                `,
+						</div>
+                    `,
                 certificates: `
-                    <div id='certificates'>
+				<div id='certificates'>
                         <h5>Certificates</h5>
                         <form>
                             <div class="mb-3">
@@ -243,10 +228,10 @@
                                 <input type="text" id="certificateName" class="form-control" placeholder="Certificate name" oninput="updatePreview()">
                             </div>
                         </form>
-                    </div>
-                `,
+					</div>
+                    `,
                 languages: `
-                    <div id='languages'>
+				<div id='languages'>
                         <h5>Languages</h5>
                         <form>
                             <div class="mb-3">
@@ -266,59 +251,104 @@
                                 <input type="text" id="languageSpeaking" class="form-control" placeholder="Speaking level (e.g., Low, Medium, High)" oninput="updatePreview()">
                             </div>
                         </form>
-                    </div>
-                `,
+						</div>
+                    `,
             };
-        
+
             let visited_sections = [];
-        
+
             function showForm(section) {
-                const dynamicFormContainer = document.getElementById('dynamic-form');
-        
+                const dynamicFormContainer =
+                    document.getElementById('dynamic-form');
+
                 if (!visited_sections.includes(section)) {
-                    dynamicFormContainer.insertAdjacentHTML('beforeend', formTemplates[section]);
+                    dynamicFormContainer.insertAdjacentHTML(
+                        'beforeend',
+                        formTemplates[section]
+                    );
                 }
-        
                 Object.keys(formTemplates).forEach((item) => {
                     const element = document.querySelector(`#${item}`);
                     if (element) {
                         element.style.display = 'none';
                     }
                 });
-        
+
                 const element = document.querySelector(`#${section}`);
                 element.style.display = 'block';
-        
+
                 visited_sections.push(section);
             }
-        
+
             function getData() {
                 // Personal Details
-                const fatherName = document.getElementById('fatherName') ? document.getElementById('fatherName').value : '';
-                const motherName = document.getElementById('motherName') ? document.getElementById('motherName').value : '';
-                const dob = document.getElementById('dob') ? document.getElementById('dob').value : '';
-                const gender = document.getElementById('gender') ? document.getElementById('gender').value : '';
-                const maritalStatus = document.getElementById('maritalStatus') ? document.getElementById('maritalStatus').value : '';
-                const nationality = document.getElementById('nationality') ? document.getElementById('nationality').value : '';
-                const religion = document.getElementById('religion') ? document.getElementById('religion').value : '';
-                const permanentAddress = document.getElementById('permanentAddress') ? document.getElementById('permanentAddress').value : '';
-        
+                const fatherName = document.getElementById('fatherName')
+                    ? document.getElementById('fatherName').value
+                    : '';
+                const motherName = document.getElementById('motherName')
+                    ? document.getElementById('motherName').value
+                    : '';
+                const dob = document.getElementById('dob')
+                    ? document.getElementById('dob').value
+                    : '';
+                const gender = document.getElementById('gender')
+                    ? document.getElementById('gender').value
+                    : '';
+                const maritalStatus = document.getElementById('maritalStatus')
+                    ? document.getElementById('maritalStatus').value
+                    : '';
+                const nationality = document.getElementById('nationality')
+                    ? document.getElementById('nationality').value
+                    : '';
+                const religion = document.getElementById('religion')
+                    ? document.getElementById('religion').value
+                    : '';
+                const permanentAddress = document.getElementById(
+                    'permanentAddress'
+                )
+                    ? document.getElementById('permanentAddress').value
+                    : '';
+
                 // Education
-                const degree = document.getElementById('degree') ? document.getElementById('degree').value : '';
-                const institution = document.getElementById('institution') ? document.getElementById('institution').value : '';
-        
+                const degree = document.getElementById('degree')
+                    ? document.getElementById('degree').value
+                    : '';
+                const institution = document.getElementById('institution')
+                    ? document.getElementById('institution').value
+                    : '';
+
                 // Skills
-                const skillName = document.getElementById('skillName') ? document.getElementById('skillName').value : '';
-        
+                const skillName = document.getElementById('skillName')
+                    ? document.getElementById('skillName').value
+                    : '';
+
                 // Certificates
-                const certificateName = document.getElementById('certificateName') ? document.getElementById('certificateName').value : '';
-        
+                const certificateName = document.getElementById(
+                    'certificateName'
+                )
+                    ? document.getElementById('certificateName').value
+                    : '';
+
                 // Languages
-                const languageName = document.getElementById('languageName') ? document.getElementById('languageName').value : '';
-                const languageReading = document.getElementById('languageReading') ? document.getElementById('languageReading').value : '';
-                const languageWriting = document.getElementById('languageWriting') ? document.getElementById('languageWriting').value : '';
-                const languageSpeaking = document.getElementById('languageSpeaking') ? document.getElementById('languageSpeaking').value : '';
-        
+                const languageName = document.getElementById('languageName')
+                    ? document.getElementById('languageName').value
+                    : '';
+                const languageReading = document.getElementById(
+                    'languageReading'
+                )
+                    ? document.getElementById('languageReading').value
+                    : '';
+                const languageWriting = document.getElementById(
+                    'languageWriting'
+                )
+                    ? document.getElementById('languageWriting').value
+                    : '';
+                const languageSpeaking = document.getElementById(
+                    'languageSpeaking'
+                )
+                    ? document.getElementById('languageSpeaking').value
+                    : '';
+
                 return {
                     fatherName,
                     motherName,
@@ -338,11 +368,12 @@
                     languageSpeaking,
                 };
             }
-        
+
             function updatePreview(section = '') {
                 const fullName = document.getElementById('fullName').value;
                 const address = document.getElementById('address').value;
-                const phoneNumber = document.getElementById('phoneNumber').value;
+                const phoneNumber =
+                    document.getElementById('phoneNumber').value;
                 const email = document.getElementById('email').value;
                 const livePreview = document.getElementById('live-preview');
                 const {
@@ -363,122 +394,156 @@
                     languageWriting,
                     languageSpeaking,
                 } = getData();
-        
                 // Initialize preview HTML
                 let previewHTML = `
-                    <div class="text-center">
-                        <h4 class="mb-0">CURRICULUM VITAE OF</h4>
-                        <h4 class="mb-3">${fullName.toUpperCase()}</h4>
-                    </div>
-                    <p class="mb-1"><strong>Address&nbsp;:</strong> ${address}</p>
-                    <p class="mb-1"><strong>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${phoneNumber} | Whatsapp | Skype</p>
-                    <p class="mb-4"><strong>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${email}</p>
-                `;
-        
+                	<div class="text-center">
+                		<h4 class="mb-0">CURRICULUM VITAE OF</h4>
+                		<h4 class="mb-3">${fullName.toUpperCase()}</h4>
+                	</div>
+                	<p class="mb-1"><strong>Address&nbsp;:</strong> ${address}</p>
+                	<p class="mb-1"><strong>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${phoneNumber} | Whatsapp | Skype</p>
+                	<p class="mb-4"><strong>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${email}</p>
+                            `;
                 // Update based on section
-                if (visited_sections.includes('personalDetails')) {
-                    previewHTML += `
-                        ${fatherName || motherName || dob || gender || maritalStatus || nationality || religion || permanentAddress
-                            ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Personal Details</strong></h5>
-                                <table>
-                                    ${fatherName ? `<tr><td><strong>Father's Name</strong></td><td>: ${fatherName}</td></tr>` : ''}
-                                    ${motherName ? `<tr><td><strong>Mother's Name</strong></td><td>: ${motherName}</td></tr>` : ''}
-                                    ${dob ? `<tr><td><strong>Date of Birth</strong></td><td>: ${dob}</td></tr>` : ''}
-                                    ${gender ? `<tr><td><strong>Gender</strong></td><td>: ${gender}</td></tr>` : ''}
-                                    ${maritalStatus ? `<tr><td><strong>Marital Status</strong></td><td>: ${maritalStatus}</td></tr>` : ''}
-                                    ${nationality ? `<tr><td><strong>Nationality</strong></td><td>: ${nationality}</td></tr>` : ''}
-                                    ${religion ? `<tr><td><strong>Religion</strong></td><td>: ${religion}</td></tr>` : ''}
-                                    ${permanentAddress ? `<tr><td><strong>Permanent Address</strong></td><td>: ${permanentAddress}</td></tr>` : ''}
-                                </table>`
-                            : ''
+                for (const item of visited_sections) {
+                    if (item === 'personalDetails') {
+                        previewHTML += `
+                              	${
+                                    fatherName ||
+                                    motherName ||
+                                    dob ||
+                                    gender ||
+                                    maritalStatus ||
+                                    nationality ||
+                                    religion ||
+                                    permanentAddress
+                                        ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Personal Details</strong></h5>
+                			<table>
+                			${
+                                fatherName
+                                    ? `<tr><td><strong>Father's Name</strong></td><td>: ${fatherName}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                motherName
+                                    ? `<tr><td><strong>Mother's Name</strong></td><td>: ${motherName}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                dob
+                                    ? `<tr><td><strong>Date of Birth</strong></td><td>: ${dob}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                gender
+                                    ? `<tr><td><strong>Gender</strong></td><td>: ${gender}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                maritalStatus
+                                    ? `<tr><td><strong>Marital Status</strong></td><td>: ${maritalStatus}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                nationality
+                                    ? `<tr><td><strong>Nationality</strong></td><td>: ${nationality}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                religion
+                                    ? `<tr><td><strong>Religion</strong></td><td>: ${religion}</td></tr>`
+                                    : ''
+                            }
+                			${
+                                permanentAddress
+                                    ? `<tr><td><strong>Permanent Address</strong></td><td>: ${permanentAddress}</td></tr>`
+                                    : ''
+                            }
+                			</table>`
+                                        : ''
+                                }
+                            `;
+                    }
+                    if (item === 'education') {
+                        previewHTML += `
+                		${
+                            degree || institution
+                                ? `<h5 class="mb-1 p-1 bg-secondary text-dark rectangular"><strong>EDUCATION</strong></h5>
+                				<table>
+                					${
+                                        degree
+                                            ? `<tr><td><strong>Degree</strong></td><td>: ${degree}</td></tr>`
+                                            : ''
+                                    }
+                					${
+                                        institution
+                                            ? `<tr><td><strong>Institution</strong></td><td>: ${institution}</td></tr>`
+                                            : ''
+                                    }
+                				</table>
+                				<br/>`
+                                : ''
                         }
-                    `;
-                }
-        
-                if (visited_sections.includes('education')) {
-                    previewHTML += `
-                        ${degree || institution
-                            ? `<h5 class="mb-2 mt-3 p-1 bg-secondary text-dark rectangular"><strong>EDUCATION</strong></h5>
-                                <table>
-                                    ${degree ? `<tr><td><strong>Degree</strong></td><td>: ${degree}</td></tr>` : ''}
-                                    ${institution ? `<tr><td><strong>Institution</strong></td><td>: ${institution}</td></tr>` : ''}
-                                </table>
-                                <br/>`
-                            : ''
-                        }
-                    `;
-                }
-        
-                if (visited_sections.includes('skills')) {
-                    previewHTML += `
-                        ${skillName
+                              `;
+                    }
+                    if (item === 'skills') {
+                        previewHTML += `
+                	${
+                        skillName
                             ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>SKILL</strong></h5>
-                                <table>
-                                    <tr><td><strong>Skill</strong></td><td>: ${skillName}</td></tr>
-                                </table><br/>`
+                			<table>
+                				<tr><td><strong>Skill</strong></td><td>: ${skillName}</td></tr>
+                			</table><br/>`
                             : ''
+                    }
+                	`;
+                    }
+                    if (item === 'certificates') {
+                        previewHTML += `
+                		${
+                            certificateName
+                                ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>CERTIFICATIONS</strong></h5>
+                			<table>
+                			<tr><td><strong>Certificate</strong></td><td>: ${certificateName}</td></tr>
+                			</table><br/>`
+                                : ''
                         }
-                    `;
-                }
-        
-                if (visited_sections.includes('certificates')) {
-                    previewHTML += `
-                        ${certificateName
-                            ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>CERTIFICATIONS</strong></h5>
-                                <table>
-                                    <tr><td><strong>Certificate</strong></td><td>: ${certificateName}</td></tr>
-                                </table><br/>`
-                            : ''
+                  				`;
+                    }
+                    if (item === 'languages') {
+                        previewHTML += `
+                		${
+                            languageName ||
+                            languageReading ||
+                            languageWriting ||
+                            languageSpeaking
+                                ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>LANGUAGE PROFICIENCY</strong></h5>
+                			<table class="table table-bordered">
+                			<thead class="thead-light">
+                				<tr>
+                				<th>Language</th>
+                				<th>Reading</th>
+                				<th>Writing</th>
+                				<th>Speaking</th>
+                				</tr>
+                			</thead>
+                			<tbody>
+                				<tr>
+                				<td>${languageName || 'N/A'}</td>
+                				<td>${languageReading || 'N/A'}</td>
+                				<td>${languageWriting || 'N/A'}</td>
+                				<td>${languageSpeaking || 'N/A'}</td>
+                				</tr>
+                			</tbody>
+                			</table><br/>`
+                                : ''
                         }
-                    `;
+                `;
+                    }
                 }
-        
-                if (visited_sections.includes('languages')) {
-                    previewHTML += `
-                        ${languageName || languageReading || languageWriting || languageSpeaking
-                            ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>LANGUAGE PROFICIENCY</strong></h5>
-                                <table class="table table-bordered">
-                                    <thead class="thead-light">
-                                        <tr>
-                                            <th>Language</th>
-                                            <th>Reading</th>
-                                            <th>Writing</th>
-                                            <th>Speaking</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>${languageName || 'N/A'}</td>
-                                            <td>${languageReading || 'N/A'}</td>
-                                            <td>${languageWriting || 'N/A'}</td>
-                                            <td>${languageSpeaking || 'N/A'}</td>
-                                        </tr>
-                                    </tbody>
-                                </table><br/>`
-                            : ''
-                        }
-                    `;
-                }
-        
                 // Update the live preview
                 livePreview.innerHTML = previewHTML;
-
             }
-
-            async function exportToPDF() {
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF();
-
-                const livePreview = document.getElementById('live-preview');
-                await pdf.html(livePreview, {
-                    callback: (doc) => doc.save('cv.pdf'),
-                    x: 15,
-                    y: 15,
-                    html2canvas: { scale: 2 },
-                });
-            }
-
         </script>
-        
     </body>
 </html>
