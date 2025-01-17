@@ -59,6 +59,20 @@
                                         required
                                     />
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="designation" class="form-label"
+                                        >Designation</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="designation"
+                                        class="form-control"
+                                        placeholder="Enter your full name"
+                                        required
+                                    />
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="address" class="form-label"
                                         >Address</label
@@ -103,13 +117,6 @@
                             <!-- Vertical Buttons -->
                             <h5 class="mt-4">Add More Details</h5>
                             <div class="d-flex flex-column">
-                                <button
-                                    class="btn btn-outline-primary mb-2"
-                                    onclick="showForm('personalDetails')"
-                                >
-                                    <i class="fas fa-user me-2"></i>Personal
-                                    Details
-                                </button>
                                 <button
                                     class="btn btn-outline-success mb-2"
                                     onclick="showForm('education')"
@@ -169,45 +176,7 @@
         
         <script>
             const formTemplates = {
-                personalDetails: `
-                    <div id="personalDetails">
-                        <h5>Personal Details</h5>
-                        <form>
-                            <div class="mb-3">
-                                <label for="fatherName" class="form-label">Father's Name</label>
-                                <input type="text" id="fatherName" class="form-control" placeholder="Enter father's name" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="motherName" class="form-label">Mother's Name</label>
-                                <input type="text" id="motherName" class="form-control" placeholder="Enter mother's name" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="dob" class="form-label">Date of Birth</label>
-                                <input type="date" id="dob" class="form-control" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="gender" class="form-label">Gender</label>
-                                <input type="text" id="gender" class="form-control" placeholder="Enter gender" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="maritalStatus" class="form-label">Marital Status</label>
-                                <input type="text" id="maritalStatus" class="form-control" placeholder="Enter marital status" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="nationality" class="form-label">Nationality</label>
-                                <input type="text" id="nationality" class="form-control" placeholder="Enter nationality" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="religion" class="form-label">Religion</label>
-                                <input type="text" id="religion" class="form-control" placeholder="Enter religion" oninput="updatePreview()">
-                            </div>
-                            <div class="mb-3">
-                                <label for="permanentAddress" class="form-label">Permanent Address</label>
-                                <input type="text" id="permanentAddress" class="form-control" placeholder="Enter permanent address" oninput="updatePreview()">
-                            </div>
-                        </form>
-                    </div>
-                `,
+                
                 education: `
                     <div id='education'> 
                         <h5>Education</h5>
@@ -286,23 +255,15 @@
                     }
                 });
         
-                const element = document.querySelector(`#${section}`);
+                const element = document.querySelector(`#${section}`); 
                 element.style.display = 'block';
         
                 visited_sections.push(section);
             }
         
             function getData() {
-                // Personal Details
-                const fatherName = document.getElementById('fatherName') ? document.getElementById('fatherName').value : '';
-                const motherName = document.getElementById('motherName') ? document.getElementById('motherName').value : '';
-                const dob = document.getElementById('dob') ? document.getElementById('dob').value : '';
-                const gender = document.getElementById('gender') ? document.getElementById('gender').value : '';
-                const maritalStatus = document.getElementById('maritalStatus') ? document.getElementById('maritalStatus').value : '';
-                const nationality = document.getElementById('nationality') ? document.getElementById('nationality').value : '';
-                const religion = document.getElementById('religion') ? document.getElementById('religion').value : '';
-                const permanentAddress = document.getElementById('permanentAddress') ? document.getElementById('permanentAddress').value : '';
-                
+            
+        
                 // Education
                 const degree = document.getElementById('degree') ? document.getElementById('degree').value : '';
                 const institution = document.getElementById('institution') ? document.getElementById('institution').value : '';
@@ -320,14 +281,7 @@
                 const languageSpeaking = document.getElementById('languageSpeaking') ? document.getElementById('languageSpeaking').value : '';
         
                 return {
-                    fatherName,
-                    motherName,
-                    dob,
-                    gender,
-                    maritalStatus,
-                    nationality,
-                    religion,
-                    permanentAddress,
+                    
                     degree,
                     institution,
                     skillName,
@@ -341,19 +295,12 @@
         
             function updatePreview(section = '') {
                 const fullName = document.getElementById('fullName').value;
+                const designation=document.getElementById('designation').value;
                 const address = document.getElementById('address').value;
                 const phoneNumber = document.getElementById('phoneNumber').value;
                 const email = document.getElementById('email').value;
                 const livePreview = document.getElementById('live-preview');
                 const {
-                    fatherName,
-                    motherName,
-                    dob,
-                    gender,
-                    maritalStatus,
-                    nationality,
-                    religion,
-                    permanentAddress,
                     degree,
                     institution,
                     skillName,
@@ -367,33 +314,16 @@
                 // Initialize preview HTML
                 let previewHTML = `
                     <div class="text-center">
-                        <h4 class="mb-0">CURRICULUM VITAE OF</h4>
-                        <h4 class="mb-3">${fullName.toUpperCase()}</h4>
+                       
+                        <h4 class="mb-0">${fullName.toUpperCase()}</h4>
+                        <h6 class="mb-3">${designation.toUpperCase()}</h6>
                     </div>
                     <p class="mb-1"><strong>Address&nbsp;:</strong> ${address}</p>
                     <p class="mb-1"><strong>Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${phoneNumber} | Whatsapp | Skype</p>
                     <p class="mb-4"><strong>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</strong> ${email}</p>
                 `;
         
-                // Update based on section
-                if (visited_sections.includes('personalDetails')) {
-                    previewHTML += `
-                        ${fatherName || motherName || dob || gender || maritalStatus || nationality || religion || permanentAddress
-                            ? `<h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Personal Details</strong></h5>
-                                <table>
-                                    ${fatherName ? `<tr><td><strong>Father's Name</strong></td><td>: ${fatherName}</td></tr>` : ''}
-                                    ${motherName ? `<tr><td><strong>Mother's Name</strong></td><td>: ${motherName}</td></tr>` : ''}
-                                    ${dob ? `<tr><td><strong>Date of Birth</strong></td><td>: ${dob}</td></tr>` : ''}
-                                    ${gender ? `<tr><td><strong>Gender</strong></td><td>: ${gender}</td></tr>` : ''}
-                                    ${maritalStatus ? `<tr><td><strong>Marital Status</strong></td><td>: ${maritalStatus}</td></tr>` : ''}
-                                    ${nationality ? `<tr><td><strong>Nationality</strong></td><td>: ${nationality}</td></tr>` : ''}
-                                    ${religion ? `<tr><td><strong>Religion</strong></td><td>: ${religion}</td></tr>` : ''}
-                                    ${permanentAddress ? `<tr><td><strong>Permanent Address</strong></td><td>: ${permanentAddress}</td></tr>` : ''}
-                                </table>`
-                            : ''
-                        }
-                    `;
-                }
+                // Update based on section //
         
                 if (visited_sections.includes('education')) {
                     previewHTML += `
@@ -408,6 +338,7 @@
                         }
                     `;
                 }
+
         
                 if (visited_sections.includes('skills')) {
                     previewHTML += `
@@ -468,10 +399,10 @@
             async function exportToPDF() {
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF();
-                
+
                 const livePreview = document.getElementById('live-preview');
                 await pdf.html(livePreview, {
-                    callback: (doc) => doc.save('cv.pdf'), 
+                    callback: (doc) => doc.save('cv.pdf'),
                     x: 15,
                     y: 15,
                     html2canvas: { scale: 2 },
