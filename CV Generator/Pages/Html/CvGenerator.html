@@ -255,13 +255,13 @@
                     `,
             };
 
-            let visited_sections = [];
+            let visited_sections = new Set();
 
             function showForm(section) {
                 const dynamicFormContainer =
                     document.getElementById('dynamic-form');
 
-                if (!visited_sections.includes(section)) {
+                if (!visited_sections.has(section)) {
                     dynamicFormContainer.insertAdjacentHTML(
                         'beforeend',
                         formTemplates[section]
@@ -277,7 +277,7 @@
                 const element = document.querySelector(`#${section}`);
                 element.style.display = 'block';
 
-                visited_sections.push(section);
+                visited_sections.add(section);
             }
 
             function getData() {
