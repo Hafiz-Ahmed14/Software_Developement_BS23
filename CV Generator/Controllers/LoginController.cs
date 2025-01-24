@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 
 namespace CV_Generator.Controllers
-{   
+{
     [ApiController]
     [Route("cv/auth/")]
-    public class LoginController:ControllerBase
+    public class LoginController : ControllerBase
     {
         [HttpPost("login")]
-        public IActionResult Login(LoginRequest loginRequest) {
+        public IActionResult Login(LoginRequest loginRequest)
+        {
             var validUsers = new List<User>
             {
                 new User { Email = "test@example.com", Username = "Hafiz", Password = "password123" }
@@ -28,7 +29,7 @@ namespace CV_Generator.Controllers
                 return Ok(new { Message = "Login successful!" });
             }
 
-            return Unauthorized(new { Message = "Invalid credentials." }); 
+            return Unauthorized(new { Message = "Invalid credentials." });
         }
     }
 

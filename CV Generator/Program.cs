@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System.IO;
+using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,7 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapControllers();
 app.UseHttpsRedirection();
 app.UseCors();
 
@@ -75,6 +76,11 @@ app.MapGet("/cv/generatecv", async context =>
 app.MapGet("/cv/Template1Home", async context =>
 {
     await context.Response.SendFileAsync("Pages/Html/Template1Home.html");
+});
+
+app.MapGet("/cv/Template4Home", async context =>
+{
+    await context.Response.SendFileAsync("Pages/Html/Template4Home.html");
 });
 
 app.Run();

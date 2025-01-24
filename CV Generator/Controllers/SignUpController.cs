@@ -6,19 +6,20 @@ using CV_Generator.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CV_Generator.Controllers
-{   
+{
     [ApiController]
     [Route("/cv/auth/")]
-    public class SignUpController:ControllerBase
-    {   
+    public class SignUpController : ControllerBase
+    {
         [HttpPost("register")]
 
-        public IActionResult Register(SignUp signUpModel) {
+        public IActionResult Register(SignUp signUpModel)
+        {
             if (ModelState.IsValid)
             {
                 return Ok(new { Message = "Registration successful!" });
             }
-            
+
             var errors = ModelState
                 .Where(x => x.Value?.Errors?.Count > 0) // Use null-conditional operators to safely access properties
                 .ToDictionary(
@@ -31,6 +32,6 @@ namespace CV_Generator.Controllers
 
             return BadRequest(errors);
         }
-        
+
     }
 }
