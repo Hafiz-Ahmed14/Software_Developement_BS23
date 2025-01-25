@@ -21,15 +21,27 @@ const formTemplates = {
             <button type="button" class="btn btn-outline-success" onclick="addEducation()">+ Add More</button>
         </div>
     `,
-    skills: `
-        <div id="skills">
-            <h5>Skills</h5>
-            <div id="skills-container">
-                <div class="skill-entry mb-3">
+    softskills: `
+        <div id="softskills">
+            <h5>Soft Skills</h5>
+            <div id="softskills-container">
+                <div class="softskills-entry mb-3">
                     <input type="text" class="form-control" placeholder="Skill" oninput="updatePreview()">
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-success" onclick="addSkill()">+ Add More</button>
+            <button type="button" class="btn btn-outline-success" onclick="addSoftSkill()">+ Add More</button>
+        </div>
+    `,
+
+    techskills: `
+        <div id="techskills">
+            <h5>Technical Skills</h5>
+            <div id="techskills-container">
+                <div class="techskills-entry mb-3">
+                    <input type="text" class="form-control" placeholder="Skill" oninput="updatePreview()">
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-success" onclick="addTechSkill()">+ Add More</button>
         </div>
     `,
     languages: `
@@ -43,17 +55,17 @@ const formTemplates = {
             <button type="button" class="btn btn-outline-success" onclick="addLanguage()">+ Add More</button>
         </div>
     `,
-    workExperience: `
-        <div id="workExperience">
-            <h5>Work Experience</h5>
-            <div id="work-experience-container">
-                <div class="work-experience-entry mb-3 mt-3">
+    Projects: `
+        <div id="Projects">
+            <h5>PROJECTS</h5>
+            <div id="Projects-container">
+                <div class="Projects-entry mb-3 mt-3">
                     <input type="text" class="form-control mb-2" placeholder="Company Name" oninput="updatePreview()">
-                    <input type="text" class="form-control mb-2" placeholder="Designation" oninput="updatePreview()">
                     <textarea class="form-control" placeholder="Description" oninput="updatePreview()"></textarea>
+                    <input type="text" class="form-control mb-2" placeholder="Technology Used" oninput="updatePreview()">
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-success" onclick="addWorkExperience()">+ Add More</button>
+            <button type="button" class="btn btn-outline-success" onclick="addProjects()">+ Add More</button>
         </div>
     `,
 
@@ -92,10 +104,19 @@ function addAchievement() {
     container.appendChild(entry);
 }
 
-function addSkill() {
-    const container = document.getElementById("skills-container");
+function addTechSkill() {
+    const container = document.getElementById("techskills-container");
     const entry = document.createElement("div");
-    entry.className = "skill-entry mb-3";
+    entry.className = "techskills-entry mb-3";
+    entry.innerHTML = `
+        <input type="text" class="form-control" placeholder="Skill" oninput="updatePreview()">
+    `;
+    container.appendChild(entry);
+}
+function addSoftSkill() {
+    const container = document.getElementById("softskills-container");
+    const entry = document.createElement("div");
+    entry.className = "softskills-entry mb-3";
     entry.innerHTML = `
         <input type="text" class="form-control" placeholder="Skill" oninput="updatePreview()">
     `;
@@ -112,14 +133,15 @@ function addLanguage() {
     container.appendChild(entry);
 }
 
-function addWorkExperience() {
-    const container = document.getElementById("work-experience-container");
+function addProjects() {
+    const container = document.getElementById("Projects-container");
     const entry = document.createElement("div");
-    entry.className = "work-experience-entry mb-3";
+    entry.className = "Projects-entry mb-3";
     entry.innerHTML = `
         <input type="text" class="form-control mb-2" placeholder="Company Name" oninput="updatePreview()">
-        <input type="text" class="form-control mb-2" placeholder="Designation" oninput="updatePreview()">
         <textarea class="form-control" placeholder="Description" oninput="updatePreview()"></textarea>
+        <input type="text" class="form-control mb-2" placeholder="Technology Used" oninput="updatePreview()">
+
     `;
     container.appendChild(entry);
 }
@@ -191,14 +213,14 @@ function updatePreview() {
     let previewHTML = `
         <div class="d-flex">
             <!-- Left Side: 35% (Blue Background, White Text, Image with Round Border) -->
-            <div class="left-side" style="width: 37%; padding-right: 20px; background-color: #23486A; color: white; padding: 20px;">
+            <div class="left-side" style="width: 37%; padding-right: 20px; background-color:rgb(243, 242, 239); padding: 20px;">
                 <!-- Profile Image (Round Border) -->
-                <div class="d-flex justify-content-center align-items-center flex-column text-center" style="margin-bottom: 1rem;">
+                <div class="d-flex justify-content-center align-items-center flex-column text-center" style="margin-bottom: 3rem;">
                     <img 
                         src="${profileImage}" 
                         alt="Profile Image" 
-                        class="rounded-circle img-fluid border border-light shadow" 
-                        style="width: 115px; height: 115px; object-fit: cover; margin-top: 0.6rem;" 
+                        class="rounded-rectange img-fluid border border-light shadow" 
+                        style="width: 130px; height: 130px; object-fit: cover; margin-top: 0.6rem;" 
                     />
                 </div>
 
@@ -207,37 +229,51 @@ function updatePreview() {
                     
                     <div>
                         <!-- Contact Section with full-width underline on 'Contact' -->
-                        <h5 style="margin-top: 2rem;border-bottom: 2px solid #fff; padding-bottom: 10px;">Contact</h5>
-                        ${phoneNumber ? `<p class="mb-1" style="font-size: 0.85rem;"><i class="fas fa-phone-alt"></i> ${phoneNumber}</p>` : ''}
-                        ${email ? `<p class="mb-1" style="font-size: 0.85rem;"><i class="fas fa-envelope"></i> ${email}</p>` : ''}
-                        ${address ? `<p class="mb-1" style="font-size: 0.85rem;"><i class="fas fa-home"></i> ${address}</p>` : ''}
-                        ${Linkedin ? `<p class="mb-1" style="font-size: 0.85rem;"><i class="fab fa-linkedin"></i> ${Linkedin}</p>` : ''}
+                        <h5 class = "text-info" style="margin-top: 2rem;border-bottom: 1px solid var(--bs-info); padding-bottom: 10px;">Contact</h5>
+                        ${phoneNumber ? `<p class="text-info mb-1">    <i class="fas fa-phone-alt"></i> Phone </p>       <p class="mb-1" style="font-size: 0.85rem;"> +${phoneNumber}</p>` : ''}
+                        ${email ? `<p class="text-info mb-1">          <i class="fas fa-envelope"></i> Email Address</p>          <p class="mb-1" style="font-size: 0.85rem;"> ${email}</p>` : ''}
+                        ${address ? `<p class="text-info mb-1">        <i class="fas fa-home"></i> Address</p>            <p class="mb-1" style="font-size: 0.85rem;"> ${address}</p>` : ''}
+                        ${Linkedin ? `<p class="text-info mb-1">       <i class="fab fa-linkedin"></i> Linkedin</p>       <p class="mb-1" style="font-size: 0.85rem;"> ${Linkedin}</p>` : ''}
                     </div>
 
                 ` : ''}
                 
                 
 
-                <!-- Skills -->
-                ${visited_sections.includes("skills") ? `
+                <!-- Soft Skill -->
+                ${visited_sections.includes("softskills") ? `
                     <div>
-                        <h5 style="border-bottom: 2px solid #fff; padding-bottom: 10px;">Skills</h5>
+                        <h5 class="text-info" style="margin-top: 2rem;border-bottom: 1px solid var(--bs-info); padding-bottom: 10px;">SOFT SKILL</h5>
                         <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px;">
-                            ${Array.from(document.querySelectorAll("#skills-container .skill-entry input"))
+                            ${Array.from(document.querySelectorAll("#softskills-container .softskills-entry input"))
                 .map((skill) => {
-                    return skill.value
-                        ? `<li>${skill.value}</li>`
-                        : '';
+                    return skill.value ? `<li>${skill.value}</li>` : '';
                 })
                 .join('')}
                         </ul>
                     </div>
                 ` : ''}
 
+                <!-- Tech Skills Skill -->
+                ${visited_sections.includes("techskills") ? `
+                    <div>
+                        <h5 class="text-info" style="margin-top: 2rem;border-bottom: 1px solid var(--bs-info); padding-bottom: 10px;">TECHNICAL SKILL</h5>
+                        <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px;">
+                            ${Array.from(document.querySelectorAll("#techskills-container .techskills-entry input"))
+                .map((skill) => {
+                    return skill.value ? `<li>${skill.value}</li>` : '';
+                })
+                .join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+
+
                 <!-- Languages -->
                 ${visited_sections.includes("languages") ? `
                     <div>
-                        <h5 style="border-bottom: 2px solid #fff; padding-bottom: 10px;">Languages</h5>
+                        <h5 class="text-info" style="border-bottom: 1px solid var(--bs-info); padding-bottom: 10px;">Languages</h5>
                         <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px;">
                             ${Array.from(document.querySelectorAll("#languages-container .language-entry input"))
                 .map((input) => {
@@ -252,19 +288,25 @@ function updatePreview() {
                 ` : ''}
             </div>
 
-            <!-- Right Side: 65% -->
-            <div class="right-side" style="width: 63%; padding-left: 20px;">
-                <div class="text-left">
-                    <h3 class="mb-0 mt-5 ml-5">${fullName.toUpperCase()}</h3>
-                    <h5 class="mb-3 mt-2 ml-5" style="border-bottom: 5px solid #4C585B; display: inline-block; padding-bottom: 5px;">
-                        ${desig.toUpperCase()}
-                    </h5>
+
+
+            <div class="right-side" style="width: 63%; display: flex; flex-direction: column; padding: 0; margin: 0;">
+
+
+                <!-- First Section -->
+                <div class="first-section bg-info" style="width: 100%; height: 160px; padding-left: 0; margin-top: 0;">
+                    <div class="text-left text-white">
+                            <h2 class="mb-0 mt-5 ms-5">${fullName.toUpperCase()}</h2>
+                            <h5 class="mb-3 mt-2 ms-5">${desig.toUpperCase()}</h5>
+                    </div>
                 </div>
 
-                <!-- Profile Summary -->
+                <!-- Second Section -->
+                <div class="second-section" style="width: 100%; padding-left: 20px; margin-top: 10px;">
+                     <!-- Profile Summary -->
                 ${visited_sections.includes("profile") && document.getElementById("careerSummary").value ? `
-                    <div style="margin-top: 37px;">
-                        <h5 style="border-bottom: 2px solid black; padding-bottom: 10px; margin-bottom: 5px;">Profile Summary</h5>
+                    <div style="margin-top: 24px;">
+                        <h5 class = "text-info" style="border-bottom: 1px solid var(--bs-info); padding-bottom: 10px; margin-bottom: 5px;">Profile Summary</h5>
                         <p style="font-size: 0.85rem; text-align: justify; margin: 0;">
                             ${document.getElementById("careerSummary").value.trim()}
                         </p>
@@ -274,7 +316,7 @@ function updatePreview() {
                 <!-- Education -->
                 ${visited_sections.includes("education") ? `
                     <div>
-                        <h5 style="margin-top: 1rem; border-bottom: 2px solid #fff; padding-bottom: 10px;">Education</h5>
+                        <h5 class = "text-info" style="margin-top: 1rem; border-bottom: 1px solid var(--bs-info); padding-bottom: 10px;">Education</h5>
                         <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px;">
                             ${Array.from(document.querySelectorAll("#education-container .education-entry"))
                 .map((entry) => {
@@ -282,8 +324,8 @@ function updatePreview() {
                     const degree = entry.children[1].value;
                     return institution || degree
                         ? `<li>
-                                            ${institution ? `<strong>${institution}</strong>` : ''}
-                                            ${degree ? `<br>${degree}` : ''}
+                                            ${institution ? `<p class="text-info mb-1"><strong>${institution} </strong></p>` : ''}
+                                            ${degree ? `<p class = "mb-3">${degree} </p>` : ''}
                                         </li>`
                         : '';
                 })
@@ -293,26 +335,26 @@ function updatePreview() {
                 ` : ''}
 
                 <!-- Work Experience -->
-                ${visited_sections.includes("workExperience") ? `
+                ${visited_sections.includes("Projects") ? `
                     <div>
                         <!-- Section Title -->
-                        <h5 style="border-bottom: 2px solid black; padding-bottom: 10px; margin-bottom: 5px; margin-top: 3px;">
-                            Work Experience
+                        <h5 class = "text-info mt-3" style="border-bottom: 1px solid var(--bs-info); padding-bottom: 10px; margin-bottom: 5px; margin-top: 3px;">
+                            PROJECTS
                         </h5>
-                        <!-- Work Experience List -->
+                        <!-- Projects List -->
                         <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px; margin: 0;">
-                            ${Array.from(document.querySelectorAll("#work-experience-container .work-experience-entry"))
+                            ${Array.from(document.querySelectorAll("#Projects-container .Projects-entry"))
                 .map((entry) => {
                     const company = entry.children[0].value.trim();
-                    const designation = entry.children[1].value.trim();
-                    const description = entry.children[2].value.trim();
+                    const description = entry.children[1].value.trim();
+                    const technologyused = entry.children[2].value.trim();
 
                     // Ensure only non-empty values are added
-                    return (company || designation || description)
+                    return (company || technologyused || description)
                         ? `<li style="margin-bottom: 10px;">
-                                            ${company ? `<strong>${company}</strong><br>` : ''}
-                                            ${designation ? `${designation}<br>` : ''}
-                                            ${description ? `${description}` : ''}
+                                            ${company ? `<p class="text-info mb-1"><strong>${company}</strong></p>` : ''}
+                                            ${description ? `<p class="mb-1">${description}</p>` : ''}
+                                            ${technologyused ? `<p><span class="text-info"><strong>Technology Used: </strong></span>${technologyused}</p>` : ''}
                                         </li>`
                         : '';
                 })
@@ -325,7 +367,9 @@ function updatePreview() {
                 <!-- Achievement & Hackathon -->
                 ${visited_sections.includes("achievementsHackathons") ? `
                     <div>
-                        <h5 style="border-bottom: 2px solid #fff; padding-bottom: 10px;">ACHIEVEMENT & HACKATHON</h5>
+                        <h5 class = "text-info" style="border-bottom: 1px solid var(--bs-info); padding-bottom: 10px; margin-bottom: 5px; margin-top: 3px;">
+                            ACHIEVEMENT & HACKATHON
+                        </h5>
                         <ul style="font-size: 0.85rem; list-style-type: disc; padding-left: 20px;">
                             ${Array.from(document.querySelectorAll("#achievementsHackathons-container textarea"))
                 .map((skill) => {
@@ -337,10 +381,11 @@ function updatePreview() {
                         </ul>
                     </div>
                 ` : ''}
-                
-                
+
+                </div>
+
             </div>
-        </div>
+
     `;
 
     livePreview.innerHTML = previewHTML;

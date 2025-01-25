@@ -19,3 +19,15 @@ GET http://localhost:5087/cv/register
 GET http://localhost:5087/cv/generatecv
 
 ###
+
+// Dont Clicked This Many time, Its sensitive
+POST http://localhost:5087/cv/sendemail
+Content-Type: application/json"
+
+{   
+    "subject": "Test",
+    "name": "Test User", 
+    "email": "test@example.com", 
+    "question": "Test question"
+}
+###

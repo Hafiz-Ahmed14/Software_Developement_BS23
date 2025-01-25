@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CV_Generator.Models;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,7 @@ namespace CV_Generator.Controllers
     public class LoginController : ControllerBase
     {
         [HttpPost("login")]
-        public IActionResult Login(LoginRequest loginRequest)
+        public IActionResult Login(Login loginRequest)
         {
             var validUsers = new List<User>
             {
@@ -33,16 +34,5 @@ namespace CV_Generator.Controllers
         }
     }
 
-    public class LoginRequest
-    {
-        public string EmailOrUsername { get; set; }
-        public string Password { get; set; }
-    }
 
-    public class User
-    {
-        public string Email { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-    }
 }

@@ -4,6 +4,9 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using System.IO;
 using System.ComponentModel;
+using System.Net;
+using System.Net.Mail;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,4 +86,20 @@ app.MapGet("/cv/Template4Home", async context =>
     await context.Response.SendFileAsync("Pages/Html/Template4Home.html");
 });
 
+app.MapGet("/cv/Template5Home", async context =>
+{
+    await context.Response.SendFileAsync("Pages/Html/Template5Home.html");
+});
+
+app.MapGet("/cv/Template6Home", async context =>
+{
+    await context.Response.SendFileAsync("Pages/Html/Template6Home.html");
+});
+
 app.Run();
+
+
+
+
+
+
