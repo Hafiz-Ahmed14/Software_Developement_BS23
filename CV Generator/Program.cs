@@ -81,14 +81,14 @@ app.MapGet("/cv/Template1Home", async context =>
     await context.Response.SendFileAsync("Pages/Html/Template1Home.html");
 });
 
+app.MapGet("/cv/Template3Home", async context =>
+{
+    await context.Response.SendFileAsync("Pages/Html/Template3Home.html");
+});
+
 app.MapGet("/cv/Template4Home", async context =>
 {
     await context.Response.SendFileAsync("Pages/Html/Template4Home.html");
-});
-
-app.MapGet("/cv/Template5Home", async context =>
-{
-    await context.Response.SendFileAsync("Pages/Html/Template5Home.html");
 });
 
 app.MapGet("/cv/Template6Home", async context =>

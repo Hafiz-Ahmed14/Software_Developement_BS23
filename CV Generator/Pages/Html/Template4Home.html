@@ -41,7 +41,7 @@
         <div class="container my-5">
             <div class="row">
                 <!-- Input Section -->
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h4 class="mb-4">Add Your Information</h4>
@@ -56,6 +56,19 @@
                                         id="fullName"
                                         class="form-control"
                                         placeholder="Enter your full name"
+                                        required
+                                    />
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="desig" class="form-label"
+                                        >Designation</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="desig"
+                                        class="form-control"
+                                        placeholder="Enter your Designation"
                                         required
                                     />
                                 </div>
@@ -147,13 +160,12 @@
                                     <i class="fas fa-graduation-cap me-2"></i
                                     >Education
                                 </button>
-
+                                
                                 <button
-                                    class="btn btn-outline-info"
-                                    onclick="showForm('workExperience')"
+                                    class="btn btn-outline-warning mb-2"
+                                    onclick="showForm('softskills')"
                                 >
-                                    <i class="fas fa-briefcase me-2"></i>
-                                    Work Experience
+                                    <i class="fas fa-tools me-2"></i>Soft Skills
                                 </button>
 
 
@@ -166,14 +178,6 @@
 
 
                                 <button
-                                    class="btn btn-outline-warning mb-2"
-                                    onclick="showForm('softskills')"
-                                >
-                                    <i class="fas fa-tools me-2"></i>Soft Skills
-                                </button>
-
-                                
-                                <button
                                     class="btn btn-outline-info"
                                     onclick="showForm('languages')"
                                 >
@@ -181,13 +185,20 @@
                                     >Languages
                                 </button>
 
+                                <button
+                                    class="btn btn-outline-info"
+                                    onclick="showForm('Projects')"
+                                >
+                                    <i class="fas fa-briefcase me-2"></i>
+                                    PROJECTS
+                                </button>
 
                                 <button
-                                    class="btn btn-outline-success"
-                                        onclick="showForm('references')"
-                                    >
-                                        <i class="fas fa-reference me-2"></i>
-                                        Reference
+                                    class="btn btn-outline-info"
+                                    onclick="showForm('achievementsHackathons')"
+                                >
+                                    <i class="fas fa-trophy me-2"></i>
+                                    ACHIEVEMENTS & HACKATHONS
                                 </button>
 
                             </div>
@@ -196,7 +207,7 @@
                 </div>
 
                 <!-- Live Preview Section -->
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card shadow-sm">
                         <div class="card-body">
                             <h4 class="text-center mb-4">
