@@ -31,3 +31,25 @@ Content-Type: application/json"
     "question": "Test question"
 }
 ###
+
+POST http://localhost:5087/cv/auth/register
+Content-Type: application/json"
+
+{
+    "Username": "Hafizcse12",
+    "Email": "hafizcse@gmail12.com",
+    "Password": "hafiz12345",
+    "ConfirmPassword": "hafiz12345"
+}
+###
+
+POST http://localhost:5087/cv/auth/login
+Content-Type: application/json"
+
+{
+    "Username": "Hafizcse",
+    "Password": "hafiz12345"
+}
+###
+
+

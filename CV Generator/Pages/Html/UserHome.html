@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/Pages/Images/Lasticon.jpeg"  >
+  <title>CV/Resume Generator</title>
+  <!-- bootstrap4 cdn-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!--For left and right Icon-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* Circle styles */
+    /* Circle styles */
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      position: relative;
+      background-color: white;
+      /* Set the circle background to white */
+      /*border: 3px solid rgb(93, 97, 191);  */
+      /* Blue border */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      /* Optional: Adds slight shadow for depth */
+    }
+
+    /* Loading circle animation */
+    .loading-circle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 5px solid #ccc;
+      border-top: 5px solid rgb(93, 97, 191);
+      /* Blue border on the top for the loading circle */
+      border-radius: 50%;
+      animation: spin 5s linear infinite;
+      visibility: hidden;
+      /* Initially hidden */
+    }
+
+    /* Show the loading circle when the step is hovered */
+    .loading .loading-circle {
+      visibility: visible;
+    }
+
+    /* Spin animation */
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="py-1 fixed-top bg-light">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <!-- Left Section -->
+        <div class="col-lg-5">
+          <a href="/cv/UserHome" class="text-warning text-decoration-none">
+            <img src="/Pages/Images/PIC.jpeg" class="mb-0 img-fluid" style="width: 170px; height: 55px;">
+
+          </a>
+        </div>
+
+        <!-- Right Section -->
+        <div class="col-lg-7">
+          <div class="d-flex justify-content-end">
+            <a href="/cv/contactus" class="btn btn-link me-3 text-decoration-none  fw-bold"
+              style=" color:rgb(93, 97, 191);transition: transform 0.3s ease, box-shadow 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';"
+              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+              Contact Us
+            </a>
+
+            <a href="/cv/faq" class="btn btn-link me-3 text-decoration-none fw-bold"
+              style="color:rgb(93, 97, 191);transition: transform 0.3s ease, box-shadow 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';"
+              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+              FAQ
+            </a>
+
+            <a href="#Saved" class="btn btn-link me-3 text-decoration-none fw-bold"
+              style="color:rgb(93, 97, 191);transition: transform 0.3s ease, box-shadow 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';"
+              onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+              Saved Template
+            </a>
+            <div class="dropdown">
+              <button class="btn btn-link dropdown-toggle me-3 text-decoration-none fw-bold" 
+                      id="dropdownMenuButton" 
+                      data-bs-toggle="dropdown" 
+                      aria-expanded="false"
+                      style="margin-right: 5px; color: rgb(93, 97, 191); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                      onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.2)';"
+                      onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                Templates
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#custom">Custom CV</a></li>
+                <li><a class="dropdown-item" href="#templates">Fixed CV</a></li>
+                <li><a class="dropdown-item" href="#Favourite">Favourite Template</a></li>
+              </ul>
+            </div>
+            <span id="username" class="btn fw-bold text-white" , style="background-color: rgb(93, 97, 191);"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="custom"class="container-fluid my-2 py-2 mb-5" style="background-color: rgb(244, 247, 252);"> <!-- Reduced padding -->
+      <!-- Heading at the top -->
+      <h1 class="text-center text-dark text-justify mb-1 mt-5 py-4">How To Generate Custom CV</h1>
+    
+      <div class="row align-items-center" style="height: 550px;"> <!-- Set a fixed height for the row -->
+        <!-- Left Side (Video) -->
+        <div class="col-lg-6 col-md-6 col-sm-12 mb-4" style="height: 450px;">
+          <div class="video-container" style="background-color:white; padding: 20px; border-radius: 8px; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        
+            <div class="embed-responsive embed-responsive-16by9" style="height: 100%;">
+              <video id="myvideo" class="embed-responsive-item" autoplay muted loop style="width: 100%; height: 100%;">
+                <source src="/Pages/Images/video.mp4" type="video/mp4">
+                <!-- You can add more sources for other formats if needed -->
+                <source src="/Pages/Images/video.mov" type="video/quicktime">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+        
+    
+        <!-- Right Side (Points) -->
+        <div class="col-lg-6 col-md-6 col-sm-12" style="height: 450px;">
+          <ol class="list-unstyled mt-4" style="margin-left: 40px; height: 100%; display: flex; flex-direction: column;">
+            <li class="mb-3 d-flex align-items-center" style="font-size: 18px; transition: transform 0.3s ease, color 0.3s ease;" 
+                onmouseover="this.style.transform='scale(1.05)'; this.style.color='#007bff';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+              <span class="rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #007bff; color: white; font-weight: bold; margin-right: 10px;">
+                1
+              </span>
+              Add Information
+            </li>
+            <li class="mb-3 d-flex align-items-center text-bold" style="font-size: 18px; transition: transform 0.3s ease, color 0.3s ease;" 
+                onmouseover="this.style.transform='scale(1.05)'; this.style.color='#007bff';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+              <span class="rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #007bff; color: white; font-weight: bold; margin-right: 10px;">
+                2
+              </span>
+              Select any option as you want
+            </li>
+            <li class="mb-3 d-flex align-items-center" style="font-size: 18px; transition: transform 0.3s ease, color 0.3s ease;" 
+                onmouseover="this.style.transform='scale(1.05)'; this.style.color='#007bff';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+              <span class="rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #007bff; color: white; font-weight: bold; margin-right: 10px;">
+                3
+              </span>
+              Fill up the information given
+            </li>
+            <li class="mb-3 d-flex align-items-center" style="font-size: 18px; transition: transform 0.3s ease, color 0.3s ease;" 
+                onmouseover="this.style.transform='scale(1.05)'; this.style.color='#007bff';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+              <span class="rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #007bff; color: white; font-weight: bold; margin-right: 10px;">
+                4
+              </span>
+              Download your CV
+            </li>
+            <li class="mb-3 d-flex align-items-center" style="font-size: 18px; transition: transform 0.3s ease, color 0.3s ease;" 
+                onmouseover="this.style.transform='scale(1.05)'; this.style.color='#007bff';" 
+                onmouseout="this.style.transform='scale(1)'; this.style.color='';">
+              <span class="rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #007bff; color: white; font-weight: bold; margin-right: 10px;">
+                5
+              </span>
+              Show your CV as pdf form
+            </li>
+          </ol>
+        </div>
+        
+        <div class="text-center mb-3">
+          <a href="/cv/generatecv" class="btn text-light btn-lg mt-2 bg-primary">
+            Get Started
+          </a>
+        </div>
+        
+      </div>
+    </section>
+    
+
+    <div id="templates" class="container-fluid my-5" style="max-width: 2420px; height: 850px; padding-top: 50px;">
+      <h1 class=" text-center mb-3" style="color:rgb(6, 6, 6) ;">Choose Your CV Template</h1>
+      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel" >
+        <!-- Carousel Items -->
+        <div class="carousel-inner" style="height: 800px; padding-top: 30px;">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 1">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 2">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template4home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 3">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template4Home'"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template6home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 4">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template6Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 5">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 6">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Button -->
+        <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <!-- Right Button -->
+        <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <!--How it works-->
+
+
+    <div id="Favourite" class="container-fluid my-5" style="max-width: 2420px; height: 850px; padding-top: 50px;">
+      <h1 class=" text-center mb-3" style="color:rgb(6, 6, 6) ;">Favourite Template</h1>
+      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel" >
+        <!-- Carousel Items -->
+        <div class="carousel-inner" style="height: 800px; padding-top: 30px;">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 1">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 2">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template4home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 3">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template4Home'"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template6home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 4">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template6Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 5">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 6">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Button -->
+        <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <!-- Right Button -->
+        <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="Saved" class="container-fluid my-5" style="max-width: 2420px; height: 850px; padding-top: 50px;">
+      <h1 class=" text-center mb-3" style="color:rgb(6, 6, 6) ;">Saved Template</h1>
+      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel" >
+        <!-- Carousel Items -->
+        <div class="carousel-inner" style="height: 800px; padding-top: 30px;">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 1">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 2">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template4home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 3">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template4Home'"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template6home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 4">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template6Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 5">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template1home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card template-card h-100 shadow-sm"
+                  style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
+                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                    alt="Template 6">
+                  <div class="card-body text-center">
+                    <button class="btn fw-bold mt-3 text-white hover-button"
+                      onclick="window.location.href='/cv/Template3Home';"
+                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      Use Template
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Button -->
+        <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <!-- Right Button -->
+        <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" type="button"
+          data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+  <footer class="bg-dark text-white text-center py-1 mt-auto">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 CV Generator. All Rights Reserved.</p>
+      <div class="social-icons mt-2">
+        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!--bootstrap4 js,query-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const username = localStorage.getItem("loggedInUser");
+    
+    if (username) {
+        document.getElementById("username").textContent = username;
+    } else {
+        console.warn("No logged-in user found.");
+    }
+});
+  </script>
+</body>
+
+</html>
