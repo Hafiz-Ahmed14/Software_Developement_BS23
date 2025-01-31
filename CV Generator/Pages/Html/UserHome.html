@@ -121,7 +121,19 @@
                 <li><a class="dropdown-item" href="#Favourite">Favourite Template</a></li>
               </ul>
             </div>
-            <span id="username" class="btn fw-bold text-white" , style="background-color: rgb(93, 97, 191);"></span>
+            <!-- <span id="username" class="btn fw-bold text-white" , style="background-color: rgb(93, 97, 191);"></span> -->
+            <div class="dropdown">
+              <button class="btn btn-link dropdown-toggle text-decoration-none fw-bold" id="profileDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(93, 97, 191);">
+                <i class="bi bi-person-circle ms-1"></i>
+                <span id="username" class="fw-bold  px-1 rounded" style="background-color: rgb(247, 247, 247); color: rgb(93, 97, 191);"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" style="color: rgb(93, 97, 191);" href="/cv/profile"><strong>Profile</strong></a></li>
+                <li><a class="dropdown-item" style="color: rgb(93, 97, 191);" href="/cv/settings"><strong>Settings</strong></a></li>
+                <li><a class="dropdown-item" style="color: rgb(93, 97, 191);" href="/cv/home"><strong>Logout</strong></a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -481,7 +493,7 @@
 
     <div id="Saved" class="container-fluid my-5" style="max-width: 2420px; height: 850px; padding-top: 50px;">
       <h1 class=" text-center mb-3" style="color:rgb(6, 6, 6) ;">Saved Template</h1>
-      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel" >
+      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Carousel Items -->
         <div class="carousel-inner" style="height: 800px; padding-top: 30px;">
           <!-- Slide 1 -->
@@ -490,121 +502,139 @@
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave1.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 1">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template1Home';"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template1Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(1);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave2.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 2">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template3home';"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template3Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(2);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template4home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave3.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 3">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template4Home'"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template4Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(3);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
             </div>
           </div>
-
+    
           <!-- Slide 2 -->
           <div class="carousel-item">
             <div class="row">
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template6home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave4.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 4">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template6Home';"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template6Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(4);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave5.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 5">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template1home';"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template1Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(5);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
               <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card template-card h-100 shadow-sm"
                   style="transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative;"
-                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-button').style.opacity='1'; this.querySelector('.hover-button').style.visibility='visible';"
-                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-button').style.opacity='0'; this.querySelector('.hover-button').style.visibility='hidden';">
-                  <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
+                  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(0, 0, 0, 0.2)'; this.querySelector('.hover-buttons').style.opacity='1'; this.querySelector('.hover-buttons').style.visibility='visible';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)'; this.querySelector('.hover-buttons').style.opacity='0'; this.querySelector('.hover-buttons').style.visibility='hidden';">
+                  <img src="/Pages/Images/usersave6.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 6">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
-                      onclick="window.location.href='/cv/Template3Home';"
-                      style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
-                      Use Template
-                    </button>
+                    <div class="hover-buttons" style="opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
+                      <button class="btn btn-primary fw-bold mt-3 text-white" onclick="window.location.href='/cv/Template3Home';">
+                        Edit
+                      </button>
+                      <button class="btn btn-danger fw-bold mt-3 text-white ms-2" onclick="deleteTemplate(6);">
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-
+    
             </div>
           </div>
         </div>
-
+    
         <!-- Left Button -->
         <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" type="button"
           data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
           <i class="bi bi-chevron-left"></i>
         </button>
-
+    
         <!-- Right Button -->
         <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" type="button"
           data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
@@ -612,6 +642,8 @@
         </button>
       </div>
     </div>
+    
+    
 
   <footer class="bg-dark text-white text-center py-1 mt-auto">
     <div class="container">

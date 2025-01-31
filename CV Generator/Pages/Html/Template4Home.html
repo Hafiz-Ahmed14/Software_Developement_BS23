@@ -254,39 +254,49 @@
         
                 // Create a new jsPDF instance with A4 size (210mm x 297mm)
                 const doc = new jsPDF({
-                    orientation: 'p',  // Portrait orientation
-                    unit: 'mm',        // Unit of measurement (millimeters)
-                    format: 'a4'       // Paper size (A4)
+                    orientation: 'p',
+                    unit: 'mm',
+                    format: 'a4'
                 });
         
-                // Set the margins (10px ≈ 2.8mm for A4 size)
-                const margin = 16;  // 10px margin (approximately 2.8mm in A4 size)
-                const content = document.getElementById('live-preview'); // Get the content to be converted
-        
-                // Use html2pdf to convert the HTML content to PDF
-                html2pdf()
+                const content = document.getElementById('live-preview'); // Get content
+                const id = "cv";
+                const pdfname = generateFilename(id);
+                // Configure html2pdf with proper page breaks
+                await html2pdf()
                     .from(content)
                     .set({
-                        margin: margin,  // Apply the margin of 10px
-                        filename: 'live-preview-content.pdf',  // Output file name
+                        margin: 16,
+                        filename: pdfname,
                         html2canvas: {
-                            scale: 2,  // Improve rendering quality
-                            useCORS: true,  // Enable CORS for cross-origin images (optional)
-                            logging: true  // Enable logging to help debug
+                            scale: 2, // High resolution for better quality
+                            useCORS: true
                         },
                         jsPDF: {
-                            unit: 'mm',        // Unit of measurement (millimeters)
-                            format: 'a4',      // A4 size paper
-                            orientation: 'p'   // Portrait orientation
+                            unit: 'mm',
+                            format: 'a4',
+                            orientation: 'p'
                         }
                     })
-                    .then(function () {
-                        // After conversion, html2pdf automatically handles page breaks
-                        // No need to manually handle page breaks, the library does it
-                        console.log('PDF generated successfully');
+                    .toPdf()
+                    .get('pdf')
+                    .then((pdf) => {
+                        let totalPages = pdf.internal.getNumberOfPages();
+        
+                        // Apply page numbers
+                        for (let i = 1; i <= totalPages; i++) {
+                            pdf.setPage(i);
+                            pdf.setFontSize(10);
+                            pdf.text(`Page ${i} of ${totalPages}`, 180, 290); // Position footer at bottom
+                        }
                     })
-                    .save();  // Save the generated PDF file
+                    .save(); // Save the generated PDF file
             }
+    
+            const generateFilename = (id) => {
+                const guid = crypto.randomUUID(); // Generate a UUID (GUID)
+                return `${id}-${guid}.pdf`;
+            };
         </script>
             
     </body>

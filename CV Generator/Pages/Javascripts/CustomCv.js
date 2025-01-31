@@ -311,17 +311,45 @@ function updatePreview(section = '') {
 
 
         if (item === 'skills') {
-            const skills = [...document.querySelectorAll('#skills-container .form-control')].map(input => input.value).filter(Boolean);
+            let skills = [...document.querySelectorAll('#skills-container .form-control')]
+                .map(input => input.value)
+                .filter(Boolean);
+
+            if (skills.length > 10) {
+                alert("You can only add up to 10 skills!");
+                return; // Stop execution
+            }
 
             if (skills.length) {
-                previewHTML += `
-                    <h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Skills</strong></h5>
-                    <ul>
-                        ${skills.map(skill => `<li>${skill}</li>`).join('')}
-                    </ul>
-                `;
+                if (skills.length > 15) {
+                    // This case will never trigger since we cap at 10, but kept for reference
+                    previewHTML += `
+                        <h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Skills</strong></h5>
+                        <ul>
+                            ${skills.map(skill => `<li>${skill}</li>`).join('')}
+                        </ul>
+                    `;
+                } else {
+                    // Split the first 5 to left, rest to right
+                    const leftSkills = skills.slice(0, 5);
+                    const rightSkills = skills.slice(5);
+
+                    previewHTML += `
+                        <h5 class="mb-3 p-1 bg-secondary text-dark rectangular"><strong>Skills</strong></h5>
+                        <div style="display: flex; justify-content: space-between;">
+                            <ul style="width: 48%;">
+                                ${leftSkills.map(skill => `<li>${skill}</li>`).join('')}
+                            </ul>
+                            <ul style="width: 48%;">
+                                ${rightSkills.map(skill => `<li>${skill}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
             }
         }
+
+
 
         if (item === 'extraCurricularActivities') {
             const activities = [...document.querySelectorAll('#activities-container .form-control')].map(input => input.value).filter(Boolean);

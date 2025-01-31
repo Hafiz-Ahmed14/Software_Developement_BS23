@@ -158,5 +158,9 @@ app.MapGet("/cv/UserHome", async context =>
     await context.Response.SendFileAsync("Pages/Html/UserHome.html");
 });
 
+app.MapGet("/cv/profile", () => "This page is Under Construction!!!");
+
+
+app.MapGet("/cv/settings", () => "his page is Under Construction!!!");
 
 app.Run();
