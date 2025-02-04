@@ -52,19 +52,6 @@ namespace CV_Generator.Controllers
         }
 
         [HttpPost("login")]
-        // public async Task<IActionResult> Login(LoginRequest request)
-        // {
-        //     var user = await _dbContext.Users
-        //                                 .FirstOrDefaultAsync(u => u.Username == request.Username || u.Email == request.Username);
-
-        //     // Ensure user exists and the password matches
-        //     if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-        //     {
-        //         return Unauthorized(new { error = "Invalid username or password." });
-        //     }
-
-        //     return Ok(new { message = "Login successful." });
-        // }
 
         public async Task<IActionResult> Login(LoginRequest request)
         {
@@ -95,6 +82,13 @@ namespace CV_Generator.Controllers
                 return BadRequest(new { error = "Email not registered." });
             }
 
+            // Remove any existing OTP for this email before generating a new one
+            var existingOtp = await _dbContext.Otps.FirstOrDefaultAsync(o => o.Email == request.Email);
+            if (existingOtp != null)
+            {
+                _dbContext.Otps.Remove(existingOtp);
+                await _dbContext.SaveChangesAsync();
+            }
             // Generate OTP
             string otp = GenerateOtp();
 
@@ -103,7 +97,7 @@ namespace CV_Generator.Controllers
             {
                 Email = request.Email,
                 OtpCode = otp,
-                ExpirationTime = DateTime.UtcNow.AddMinutes(5) // Set expiration time
+                ExpirationTime = DateTime.UtcNow.AddMinutes(3) // Set expiration time
             };
 
             _dbContext.Otps.Add(otpEntry);

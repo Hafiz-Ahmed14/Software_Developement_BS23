@@ -16,61 +16,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    /* Circle styles */
-    /* Circle styles */
-    .circle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-shrink: 0;
-      position: relative;
-      background-color: white;
-      /* Set the circle background to white */
-      /*border: 3px solid rgb(93, 97, 191);  */
-      /* Blue border */
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      /* Optional: Adds slight shadow for depth */
-    }
-
-    /* Loading circle animation */
-    .loading-circle {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 5px solid #ccc;
-      border-top: 5px solid rgb(93, 97, 191);
-      /* Blue border on the top for the loading circle */
-      border-radius: 50%;
-      animation: spin 5s linear infinite;
-      visibility: hidden;
-      /* Initially hidden */
-    }
-
-    /* Show the loading circle when the step is hovered */
-    .loading .loading-circle {
-      visibility: visible;
-    }
-
-    /* Spin animation */
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/Pages/CSS/home.css">
+  <link rel="stylesheet" href="/Pages/CSS/loadingscreen.css">
 </head>
 
 <body>
+  <div id="progress-bar"></div>
+  <div id="loading-overlay"></div>
   <header class="py-1 fixed-top bg-light">
     <div class="container-fluid">
       <div class="row align-items-center">
@@ -152,13 +104,6 @@
       </div>
     </div>
 
-
-
-
-
-
-
-
     <section id="custom"class="container-fluid my-2 py-2 mb-5" style="background-color: rgb(244, 247, 252);"> <!-- Reduced padding -->
       <!-- Heading at the top -->
       <h1 class="text-center text-dark text-justify mb-1 mt-2 py-4">How To Generate Custom CV</h1>
@@ -237,7 +182,12 @@
     
 
     <div id="templates" class="container-fluid my-5" style="max-width: 2420px; height: 850px; padding-top: 50px;">
-      <h1 class=" text-center mb-3" style="color:rgb(6, 6, 6) ;">Choose Your CV Template</h1>
+      <h1 class=" text-center mb-2" style="color:rgb(6, 6, 6) ;">Choose Your CV Template</h1>
+      <h5 class="text-center mb-3" style="color:rgb(6, 6, 6);">
+        Want access to more amazing templates? Just sign up and log in to get started!
+      </h5>
+      
+      
       <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel" >
         <!-- Carousel Items -->
         <div class="carousel-inner" style="height: 800px; padding-top: 30px;">
@@ -252,11 +202,11 @@
                   <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 1">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
+                    <!-- <button class="btn fw-bold mt-3 text-white hover-button"
                       onclick="window.location.href='/cv/Template1Home';"
                       style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
                       Use Template
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -286,11 +236,11 @@
                   <img src="/Pages/Images/Template4home.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 3">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
+                    <!-- <button class="btn fw-bold mt-3 text-white hover-button"
                       onclick="window.location.href='/cv/Template4Home'"
                       style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
                       Use Template
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -309,11 +259,11 @@
                   <img src="/Pages/Images/Template6home.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 4">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
+                    <!-- <button class="btn fw-bold mt-3 text-white hover-button"
                       onclick="window.location.href='/cv/Template6Home';"
                       style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
                       Use Template
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -326,11 +276,11 @@
                   <img src="/Pages/Images/Template1home.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 5">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
+                    <!-- <button class="btn fw-bold mt-3 text-white hover-button"
                       onclick="window.location.href='/cv/Template1home';"
                       style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
                       Use Template
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -343,11 +293,11 @@
                   <img src="/Pages/Images/Template3home.png" class="card-img-top img-fluid" style="height: 600px;"
                     alt="Template 6">
                   <div class="card-body text-center">
-                    <button class="btn fw-bold mt-3 text-white hover-button"
+                    <!-- <button class="btn fw-bold mt-3 text-white hover-button"
                       onclick="window.location.href='/cv/Template3Home';"
                       style="background-color: rgb(93, 97, 191); opacity: 0; visibility: hidden; transition: opacity 0.3s ease;">
                       Use Template
-                    </button>
+                    </button> -->
                   </div>
                 </div>
               </div>
@@ -428,7 +378,7 @@
       </div>
 
 
-      <div id="templateCarousel" class="carousel slide" data-bs-ride="carousel"
+      <div id="templateCarousel1" class="carousel slide" data-bs-ride="carousel"
         style="background-color: rgb(244, 247, 252); margin-top: 0;">
         <!-- Carousel Items -->
         <div class="carousel-inner">
@@ -461,13 +411,13 @@
 
         <!-- Left Button -->
         <button class="btn btn-dark rounded-circle position-absolute start-0 translate-middle-y" type="button"
-          data-bs-target="#templateCarousel" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
+          data-bs-target="#templateCarousel1" data-bs-slide="prev" style="top: 50%; width: 50px; height: 50px;">
           <i class="bi bi-chevron-left"></i>
         </button>
 
         <!-- Right Button -->
         <button class="btn btn-dark rounded-circle position-absolute end-0 translate-middle-y" type="button"
-          data-bs-target="#templateCarousel" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
+          data-bs-target="#templateCarousel1" data-bs-slide="next" style="top: 50%; width: 50px; height: 50px;">
           <i class="bi bi-chevron-right"></i>
         </button>
       </div>
@@ -632,6 +582,8 @@
 
   <!--bootstrap4 js,query-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/Pages/Javascripts/LoadingScreen.js"></script>
+  
 </body>
 
 </html>

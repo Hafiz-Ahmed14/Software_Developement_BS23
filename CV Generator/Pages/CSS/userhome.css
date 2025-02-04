@@ -1,0 +1,51 @@
+/* Circle styles */
+/* Circle styles */
+.circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    background-color: white;
+    /* Set the circle background to white */
+    /*border: 3px solid rgb(93, 97, 191);  */
+    /* Blue border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: Adds slight shadow for depth */
+}
+
+/* Loading circle animation */
+.loading-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 5px solid #ccc;
+    border-top: 5px solid rgb(93, 97, 191);
+    /* Blue border on the top for the loading circle */
+    border-radius: 50%;
+    animation: spin 5s linear infinite;
+    visibility: hidden;
+    /* Initially hidden */
+}
+
+
+/* Show the loading circle when the step is hovered */
+.loading .loading-circle {
+    visibility: visible;
+}
+
+/* Spin animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

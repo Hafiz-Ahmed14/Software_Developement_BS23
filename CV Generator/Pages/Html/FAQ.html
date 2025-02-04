@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/Pages/CSS/loadingscreen.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
+        <div id="progress-bar"></div>
+        <div id="progress-bar-validation"></div>
+        <div id="loading-overlay"></div>
     <!-- Header -->
     <header class="py-1 fixed-top bg-light">
         <div class="container-fluid">
@@ -140,6 +143,8 @@
 
     <!-- Bootstrap 5.3.3 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/Pages/Javascripts/LoadingScreen.js"></script>
+
 </body>
 
 </html>

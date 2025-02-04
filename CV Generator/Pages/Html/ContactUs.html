@@ -4,111 +4,80 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/Pages/Images/Lasticon.jpeg"  >
+    <link rel="icon" type="image/x-icon" href="/Pages/Images/Lasticon.jpeg">
     <title>Contact Us Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        .card {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 20px;
-            padding: 1.5rem;
-        }
-
-        footer {
-            margin-top: auto;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            /* Adjust heading size */
-        }
-    </style>
+    <link rel="stylesheet" href="/Pages/CSS/loadingscreen.css">
+    <link rel="stylesheet" href="/Pages/CSS/contactus.css">
 </head>
 
 <body class="bg-light">
-    <!-- Header -->
+    <div id="progress-bar"></div>
+    <div id="progress-bar-validation"></div>
+    <div id="loading-overlay"></div>
 
-    <header class="py-1 fixed-top bg-light">
+    <!-- Header -->
+    <header class="py-1 fixed-top">
         <div class="container-fluid">
-          <div class="row align-items-center">
-            <!-- Left Section -->
-            <div class="col-lg-5">
-              <a href="/cv/home" class="text-warning text-decoration-none">
-                <img src="/Pages/Images/PIC.jpeg" class="mb-0 img-fluid" style="width: 170px; height: 55px;">
-    
-              </a>
-            </div>
-    
-            <!-- Right Section -->
-            <div class="col-lg-7">
-                <div class="d-flex justify-content-end">
-                    <a href="/cv/login" class="btn btn-outline-dark me-3 fw-bold text-dark">Login</a>
-                    <a href="/cv/generatecv" class="btn btn-warning fw-bold">Get Started</a>
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <a href="/cv/home" class="text-warning text-decoration-none">
+                        <img src="/Pages/Images/PIC.jpeg" class="mb-0 img-fluid" style="width: 170px; height: 55px;">
+                    </a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="d-flex justify-content-end">
+                        <a href="/cv/login" class="btn btn-outline-dark me-3 fw-bold text-dark">Login</a>
+                        <a href="/cv/generatecv" class="btn btn-warning fw-bold">Get Started</a>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
-      </header>
+    </header>
 
     <!-- Main Content -->
     <main class="container d-flex flex-column align-items-center mt-5 pt-5">
-        <!-- Contact Us Heading -->
         <h1 class="text-bold text-center mb-3"><b>Contact Us</b></h1>
-        <!-- Form Description -->
 
-        <!-- Form Box -->
-        <div class="card shadow">
+        
+
+        <div class="card shadow mb-3 mt-1">
+            <div id="notification" class="notification"></div>
             <span class="py-3 text-secondary">
                 Do you have a question, remark, complaint, or suggestion? Please first
                 read the frequently asked questions before contacting us. If your
-                question remains unanswered, use the form below.
-            </span>
-            <!-- Form -->
+                question remains unanswered, use the form below.            </span>
+
+            <!-- Contact Form -->
             <form id="contactForm">
-                <!-- Subject -->
                 <div class="mb-3">
                     <label for="subject" class="form-label">Subject</label>
-                    <div class="input-group">
-                        <select class="form-control pe-5" id="subject" required>
-                            <option value="">Select a subject</option>
-                            <option value="question">Question</option>
-                            <option value="remark">Remark</option>
-                            <option value="complaint">Complaint</option>
-                            <option value="suggestion">Suggestion</option>
-                        </select>
-                    </div>
+                    <select class="form-control" id="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="question">Question</option>
+                        <option value="remark">Remark</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="suggestion">Suggestion</option>
+                    </select>
                 </div>
 
-                <!-- Name -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
                 </div>
-                <!-- Email -->
+
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
                 </div>
-                <!-- Question -->
+
                 <div class="mb-3">
                     <label for="question" class="form-label">Question</label>
                     <input type="text" class="form-control" id="question" placeholder="Enter your question" required />
                 </div>
-                <!-- Send Button -->
+
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary">Send</button>
                 </div>
@@ -118,37 +87,14 @@
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-3">
-        <p class="text-center mb-0">©  2025 CV/Resume Generator. All Rights Reserved.</p>
+        <p class="text-center mb-0">© 2025 CV/Resume Generator. All Rights Reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', async function (event) {
-            event.preventDefault();
+    <script src="/Pages/Javascripts/LoadingScreen.js"></script>
+    <script src="/Pages/Javascripts/ContactUs.js"></script>
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const question = document.getElementById('question').value;
-            //console.log({ name, email, subject, question });
-            try {
-                const response = await fetch('/cv/sendemail', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, subject, question }),
-                });
-
-                if (response.ok) {
-                    alert('Your message has been sent successfully!');
-                } else {
-                    alert('Failed to send your message. Please try again.');
-                }
-            } catch (error) {
-                alert('An error occurred: ' + error.message);
-            }
-        });
-    </script>
 </body>
 
 </html>

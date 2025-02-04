@@ -30,7 +30,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = ".ResetPasswordSession";  // Set cookie name for session
-    options.IdleTimeout = TimeSpan.FromMinutes(30);  // Set session timeout
+    options.IdleTimeout = TimeSpan.FromMinutes(7);  // Set session timeout
 });
 
 
