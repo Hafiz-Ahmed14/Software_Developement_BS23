@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/Pages/Images/Lasticon.jpeg"  >
+  <title>Enter OTP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/Pages/CSS/loadingscreen.css">
+</head>
+<div id="progress-bar"></div>
+    <div id="progress-bar-validation"></div>
+    <div id="loading-overlay"></div>
+<header class="py-1 bg-light">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <!-- Left Section -->
+      <div class="col-lg-5">
+        <a href="/cv/home" class="text-warning text-decoration-none">
+          <img src="/Pages/Images/PIC.jpeg" class="mb-0 img-fluid" style="width: 170px; height: 55px;">
+
+        </a>
+      </div>
+
+      <!-- Right Section -->
+      <div class="col-lg-7">
+        
+      </div>
+    </div>
+  </div>
+</header>
+<body class="bg-light">
+  <main class="container d-flex justify-content-center align-items-center">
+    <div class="card shadow" style="max-width: 350px; width: 100%; padding: 2rem;">
+      <h2 class="text-center mb-3">Enter OTP</h2>
+      <form id="otpForm">
+        <div class="mb-3">
+          <label for="otp" class="form-label">Enter OTP sent to your email</label>
+          <input type="text" class="form-control" id="otp" placeholder="Enter OTP" required />
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Verify OTP</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/Pages/Javascripts/LoadingScreen.js"></script>
+ 
+  <script>
+    document.getElementById('otpForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const otp = document.getElementById('otp').value.trim();
+
+      try {
+        const response = await fetch('/cv/auth/verify-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ otp }),
+        });
+
+        if (response.ok) {
+          alert('OTP verified. Now set your new password.');
+          window.location.href = '/cv/resetpassword';
+        } else {
+          const errorData = await response.json();
+          alert(`Error: ${errorData.error || errorData.message}`);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+      }
+    });
+  </script>
+</body>
+</html>

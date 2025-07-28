@@ -1,5 +1,0 @@
-@CV_Generator_HostAddress = http://localhost:5087
-
-GET http://localhost:5087
-
-###
