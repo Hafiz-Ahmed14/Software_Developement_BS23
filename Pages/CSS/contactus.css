@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.card {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    padding: 1.5rem;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/* Notification */
+.notification.error {
+text-align: center;
+font-size: 1rem;          /* Font size */
+font-weight: 300;         /* Light font weight */
+font-family: 'Arial', sans-serif; 
+color: #dc3545;
+}
+
+.notification.success {
+text-align: center;
+font-size: 1.5rem;          /* Font size */
+font-weight: 300;         /* Light font weight */
+font-family: 'Arial', sans-serif; 
+color: #27d34f;
+}
