@@ -1,40 +1,67 @@
 # VitaCraft – Dynamic CV Generator
 
-VitaCraft is a modern, dynamic CV/Resume Generator designed to help users create professional, ATS-friendly resumes quickly and efficiently. The application provides an intuitive interface where users can enter their personal information, education, work experience, skills, projects, certifications, and other relevant details to generate a well-structured and visually appealing CV.
+VitaCraft is a dynamic CV/Resume Generator developed as part of my **industrial attachment at Brain Station 23 (BS23)**. The project was built to provide users with a simple and efficient way to create, manage, and generate professional resumes while applying practical software development concepts learned during the industrial attachment.
 
-The primary goal of VitaCraft is to simplify the resume creation process by eliminating the need for manual formatting. Users can easily update their information, preview changes in real time, and export their resumes in a professional format suitable for job applications.
+The application follows a **frontend-backend architecture**, with a focus on maintainable code, database management, RESTful API development, design patterns, and real-world software development practices.
 
 ## Key Features
 
-* Dynamic CV generation with real-time preview
-* Professional and ATS-friendly resume templates
+* Dynamic CV generation
 * Personal information management
 * Education and academic history
 * Work experience management
-* Technical and soft skills section
-* Projects and portfolio showcase
-* Certifications and achievements
+* Technical and soft skills
+* Projects and achievements
+* Certifications
 * Language proficiency
-* Social media and professional profile links
+* Social and professional profile links
 * Custom profile summary/objective
-* Responsive design for desktop and mobile devices
-* One-click PDF export
-* Easy editing and updating of resume content
-* Clean and user-friendly interface
+* Responsive user interface
+* Professional CV formatting
+* PDF export
+* Easy editing and updating of CV information
 
-## Technologies
+## Technologies Used
 
-VitaCraft is built using modern web technologies to ensure performance, scalability, and maintainability. Depending on the deployment and implementation, the project utilizes technologies such as:
+### Frontend
 
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-* REST API integration
-* Modern component-based architecture
+* HTML5
+* CSS3
+* JavaScript
+* Bootstrap
+
+### Backend
+
+* C#
+* ASP.NET Core Web API
+* RESTful API development
+* Design Patterns
+* Dependency Injection
+* Layered application architecture
+
+### Database
+
+* MySQL
+* Entity Framework Core
+* Relational database design
+* CRUD operations
+
+## Development Practices
+
+During the development of VitaCraft, I gained practical experience in:
+
+* Frontend development using **HTML, CSS, JavaScript, and Bootstrap**
+* Backend development using **C# and ASP.NET Core**
+* Designing and developing RESTful APIs
+* Database design and management using **MySQL**
+* Applying software **design patterns**
+* Implementing layered and maintainable application architecture
+* Integrating frontend with backend APIs
+* Developing reusable and maintainable code
+* Application deployment and delivery
 
 ## Purpose
 
-The project was developed to provide students, fresh graduates, and professionals with a simple yet powerful platform for creating high-quality resumes without requiring advanced design skills. It focuses on usability, flexibility, and generating resumes that meet modern recruitment standards.
+The primary goal of VitaCraft was to develop a practical full-stack application while gaining hands-on experience with modern software development technologies and engineering practices during my **industrial attachment at Brain Station 23 (BS23)**.
 
-VitaCraft demonstrates modern frontend development practices, responsive UI design, reusable component architecture, and dynamic data handling, making it an excellent example of a real-world web application.
+The project demonstrates practical experience in **full-stack web development, C#, ASP.NET Core, REST APIs, HTML, CSS, JavaScript, Bootstrap, MySQL, design patterns, database-driven application development, and deployment**.
